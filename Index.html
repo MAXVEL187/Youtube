@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Bypass by maxvel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        iframe {
+            width: 80%;
+            height: 80%;
+            margin-top: 20px;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>YouTube Bypass by maxvel</h1>
+    <p>Enter the YouTube video link:</p>
+    <input type="text" id="youtubeUrl" placeholder="Paste YouTube link here" style="width: 60%;">
+    <button onclick="loadVideo()">Play Video</button>
+
+    <iframe id="player" src="" frameborder="0" allowfullscreen></iframe>
+
+    <footer>
+        <p>Project by maxvel</p>
+    </footer>
+
+    <script>
+        function loadVideo() {
+            const url = document.getElementById('youtubeUrl').value;
+            const videoId = extractVideoID(url);
+            if (videoId) {
+                const invidiousInstance = 'https://yewtu.be'; // You can replace with another instance
+                const embedUrl = `${invidiousInstance}/embed/${videoId}?autoplay=1&fs=1`;
+                document.getElementById('player').src = embedUrl;
+            } else {
+                alert('Invalid YouTube URL');
+            }
+        }
+
+        function extractVideoID(url) {
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+    </script>
+</body>
+</html>
