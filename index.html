@@ -43,8 +43,8 @@
             const url = document.getElementById('youtubeUrl').value;
             const videoId = extractVideoID(url);
             if (videoId) {
-                const invidiousInstance = 'https://yewtu.be'; // You can replace with another instance
-                const embedUrl = `${invidiousInstance}/embed/${videoId}?autoplay=1&fs=1`;
+                const pipedInstance = 'https://piped.video'; // Piped instance for YouTube proxy
+                const embedUrl = `${pipedInstance}/embed/${videoId}?autoplay=1&fs=1`;
                 document.getElementById('player').src = embedUrl;
             } else {
                 alert('Invalid YouTube URL');
